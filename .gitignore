@@ -1,0 +1,15 @@
+.git
+.zip
+bower_components/
+node_modules/
+jsapi-resources/
+WebAppBuilderForArcGIS/
+src/widgets/*/data/
+src/dgrid/
+src/dijit/
+src/dojo/
+src/dojox/
+src/dstore/
+src/esri/
+src/moment/
+src/util/
