@@ -13,3 +13,4 @@ src/dstore/
 src/esri/
 src/moment/
 src/util/
+*.zip
