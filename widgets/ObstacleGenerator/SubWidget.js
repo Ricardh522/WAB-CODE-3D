@@ -17,7 +17,7 @@ define([
 ) {
   return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
     // description:
-    //    ObstacleGeneratorSubWidget
+    //    obstacle generator subwidget
 
     templateString: template,
     baseClass: 'sub-widget',

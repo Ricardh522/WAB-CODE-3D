@@ -25,13 +25,13 @@
 
         require([
           
-          'esri/map',
+          'esri/arcgis/utils',
           
             testsUrl + '../SubWidget.js',
             'dojo/domReady!'
         ], function(
           
-          Map,
+          arcgisUtils,
           
           Module
         ) {
@@ -46,7 +46,15 @@
                 sliderStyle: 'small'
             };
             
-            map = new Map('map', mapOptions);
+            // this web map id is a placeholder
+            // with only the topo basemap
+            // replace it with the id of your web map
+            var webMapItemID = '6e03e8c26aad4b9c92a87c1063ddb0e3';
+            arcgisUtils.createMap(webMapItemID, 'map', {
+              mapOptions: mapOptions
+            }).then(function(response) {
+              map = response.map;
+            });
             
           
 

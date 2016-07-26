@@ -1,80 +1,85 @@
-module.exports = function(grunt) {
-
-  // replace these with your own paths
-
-  //var appDir = './WebAppBuilderForArcGIS/server/apps/1';
-
-  var stemappDir = './WebAppBuilderForArcGIS/client/stemapp3d';
-
-  grunt.initConfig({
-
-    watch: {
-      main: {
-        files: ['src/**', 'tests/**'],
-        tasks: ['jshint', 'sync'],
-        options: {
-          spawn: false
-        }
-      }
-    },
-
-    sync: {
-      main: {
-        files: [{
-          cwd: 'src',
-          src: ['**'],
-          dest: appDir
-        }, {
-          cwd: 'src',
-          src: ['**'],
-          dest: stemappDir
-        }],
-        verbose: true // Display log messages when copying files
-      }
-    },
-
-    browserSync: {
-
-      bsFiles: {
-        src: [
-        '/src/widgets/**/*.js',
-        '/src/widgets/**/*.html',
-        '/src/widgets/**/*.css'
-        ]
-      },
-      options: {
-        ui: {
-          port: 8080
+module.exports = function (grunt) {
+    'use strict';
+    grunt.loadNpmTasks('grunt-sync');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-babel');
+    var appDir = 'C:/Github/wab-code-3d/webappbuilderforarcgis/server/apps/2';
+    var stemappDir = 'C:/Github/wab-code-3d/webappbuilderforarcgis/client/stemapp3d';
+    grunt.initConfig({
+        sync: {
+            main: {
+                verbose: true,
+                files: [
+                    {
+                        cwd: 'dist/',
+                        src: '**',
+                        dest: stemappDir
+                    },
+                    {
+                        cwd: 'dist/',
+                        src: '**',
+                        dest: appDir
+                    }
+                ]
+            }
         },
-        server: {
-           browser: "google chrome",
-           directory: true,
-           baseDir: './'
+        babel: {
+            'main': {
+                'files': [{
+                        'expand': true,
+                        'src': [
+                            'widgets/*.js',
+                            'widgets/**/*.js',
+                            'widgets/**/**/*.js',
+                            'widgets/!**/**/nls/*.js',
+                            'themes/*.js',
+                            'themes/**/*.js',
+                            'themes/**/**/*.js',
+                            'themes/!**/**/nls/*.js'
+                        ],
+                        'dest': 'dist/'
+                    }]
+            }
         },
-        watchTask: true
-      }
-    },
-
-    jshint : {
-      options: {
-        reporter: require('jshint-stylish'),
-        curly: true,
-        eqeqeq: true,
-        eqnull: true,
-        browser: true,
-        dojo: true
-      },
-
-      all: ['gruntfile.js', 'src/widgets/**/*.js', 'tests/**/*.js']
-    }
-
-  });
-
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-sync');
-  grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-
-  grunt.registerTask('default', ['sync', 'watch']);
-  grunt.registerTask('serve', ['jshint', 'sync', 'browserSync', 'watch']);
+        watch: {
+            'main': {
+                'files': [
+                    'widgets/**',
+                    'themes/**'
+                ],
+                'tasks': [
+                    'clean',
+                    'babel',
+                    'copy',
+                    'sync'
+                ],
+                'options': {
+                    'spawn': false,
+                    'atBegin': true
+                }
+            }
+        },
+        copy: {
+            'main': {
+                'src': [
+                    'widgets/**/**.html',
+                    'widgets/**/**.json',
+                    'widgets/**/**.css',
+                    'widgets/**/images/**',
+                    'widgets/**/nls/**',
+                    'themes/**/**.html',
+                    'themes/**/**.json',
+                    'themes/**/**.css',
+                    'themes/**/images/**',
+                    'themes/**/nls/**'
+                ],
+                'dest': 'dist/',
+                'expand': true
+            }
+        },
+        clean: { 'dist': { 'src': 'dist/**' } }
+    });
+    grunt.registerTask('default', ['watch']);
 };

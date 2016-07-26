@@ -1,22 +1,30 @@
 {
-  "name": "custom-wab-widgets",
-  "version": "0.0.1",
-  "description": "Building custom widgets for Arora Engineers, Inc. based upon demos from Esri Professional Services",
-  "author": {
-    "name": "Richard Hughes"
-  },
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "preinstall": "bower install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ricardh522/WAB-CODE-3D.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ricardh522/WAB-CODE-3D/issues"
+  },
+  "homepage": "https://github.com/Ricardh522/WAB-CODE-3D#readme",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-browser-sync": "^2.2.0",
-    "grunt-contrib-jshint": "^0.12.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-serve": "^0.1.6",
-    "grunt-sync": "^0.2.3",
-    "intern": "^3.1.0",
-    "jshint-stylish": "^2.1.0"
-  },
-  "dependencies": {}
+    "babel-plugin-transform-es2015-modules-simple-amd": "^0.3.0",
+    "babel-preset-es2015-without-strict": "0.0.3",
+    "babel-preset-stage-0": "^6.5.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-sync": "^0.5.2"
+  }
 }
