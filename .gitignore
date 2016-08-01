@@ -5,3 +5,4 @@ node_modules/
 jsapi-resources/
 widgets/*/data/
 *.zip
+WebAppBuilderForArcGIS/
