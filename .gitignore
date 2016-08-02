@@ -6,3 +6,4 @@
 */widgets/*/data/
 *.zip
 WebAppBuilderForArcGIS/
+src/dist/
