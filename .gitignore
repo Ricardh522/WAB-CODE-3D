@@ -1,9 +1,11 @@
 .git
 .zip
-*/bower_components/
-*/node_modules/
+**bower_components/
+**node_modules/
 */jsapi-resources/
 */widgets/*/data/
 *.zip
 WebAppBuilderForArcGIS/
 src/dist/
+src/
+!src/widgets
